@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var tipAmount = 0.0
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        HStack {
+            Text("PayTab").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
         }
         .padding()
+        
+        VStack {
+            Text("Enter tip amount")
+            TextField("Enter tip amount", value: $tipAmount, format: .number)
+                .border(.secondary)
+                .padding()
+                .keyboardType(.decimalPad)
+        }
+        Spacer()
     }
 }
 
