@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8434BAD72B9806A7008BC39F /* PayTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434BAD62B9806A7008BC39F /* PayTabViewModel.swift */; };
 		84E4F8032B61E3270016AE8B /* PayTabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F8022B61E3270016AE8B /* PayTabApp.swift */; };
-		84E4F8052B61E3270016AE8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F8042B61E3270016AE8B /* ContentView.swift */; };
+		84E4F8052B61E3270016AE8B /* PayTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F8042B61E3270016AE8B /* PayTabView.swift */; };
 		84E4F8072B61E3280016AE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F8062B61E3280016AE8B /* Assets.xcassets */; };
 		84E4F80A2B61E3280016AE8B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F8092B61E3280016AE8B /* Preview Assets.xcassets */; };
 		84E4F8142B61E3280016AE8B /* PayTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F8132B61E3280016AE8B /* PayTabTests.swift */; };
@@ -34,9 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8434BAD62B9806A7008BC39F /* PayTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTabViewModel.swift; sourceTree = "<group>"; };
 		84E4F7FF2B61E3270016AE8B /* PayTab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayTab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E4F8022B61E3270016AE8B /* PayTabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTabApp.swift; sourceTree = "<group>"; };
-		84E4F8042B61E3270016AE8B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		84E4F8042B61E3270016AE8B /* PayTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTabView.swift; sourceTree = "<group>"; };
 		84E4F8062B61E3280016AE8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84E4F8092B61E3280016AE8B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		84E4F80F2B61E3280016AE8B /* PayTabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PayTabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8434BAD82B980A8F008BC39F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8434BAD62B9806A7008BC39F /* PayTabViewModel.swift */,
+				84E4F8042B61E3270016AE8B /* PayTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8434BAD92B980ABA008BC39F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		84E4F7F62B61E3270016AE8B = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +112,9 @@
 		84E4F8012B61E3270016AE8B /* PayTab */ = {
 			isa = PBXGroup;
 			children = (
+				8434BAD92B980ABA008BC39F /* Models */,
+				8434BAD82B980A8F008BC39F /* Views */,
 				84E4F8022B61E3270016AE8B /* PayTabApp.swift */,
-				84E4F8042B61E3270016AE8B /* ContentView.swift */,
 				84E4F8062B61E3280016AE8B /* Assets.xcassets */,
 				84E4F8082B61E3280016AE8B /* Preview Content */,
 			);
@@ -257,7 +276,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84E4F8052B61E3270016AE8B /* ContentView.swift in Sources */,
+				8434BAD72B9806A7008BC39F /* PayTabViewModel.swift in Sources */,
+				84E4F8052B61E3270016AE8B /* PayTabView.swift in Sources */,
 				84E4F8032B61E3270016AE8B /* PayTabApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

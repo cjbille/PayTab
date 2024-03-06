@@ -18,12 +18,12 @@ struct PayTabView: View {
         
         VStack {
             Text("Total")
-            TextField("Enter total", value: payTabViewModel.totalAmount, format: .number)
+            TextField("Enter total", value: $payTabViewModel.totalAmount, format: .number)
                 .border(.secondary)
                 .padding()
                 .keyboardType(.decimalPad)
             Text("Tip")
-            TextField("Enter tip", value: $tipAmount, format: .number)
+            TextField("Enter tip", value: $payTabViewModel.tipAmount, format: .number)
                 .border(.secondary)
                 .padding()
                 .keyboardType(.decimalPad)

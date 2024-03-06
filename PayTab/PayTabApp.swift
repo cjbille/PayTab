@@ -11,7 +11,7 @@ import SwiftUI
 struct PayTabApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PayTabView()
         }
     }
 }
