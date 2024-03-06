@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var tipAmount = 0.0
-    @State private var totalAmount = 0.0
+struct PayTabView: View {
+    @State private var payTabViewModel = PayTabViewModel()
     
     var body: some View {
         HStack {
@@ -19,7 +18,7 @@ struct ContentView: View {
         
         VStack {
             Text("Total")
-            TextField("Enter total", value: $totalAmount, format: .number)
+            TextField("Enter total", value: payTabViewModel.totalAmount, format: .number)
                 .border(.secondary)
                 .padding()
                 .keyboardType(.decimalPad)
@@ -34,5 +33,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    PayTabView()
 }
