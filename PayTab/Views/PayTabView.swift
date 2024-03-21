@@ -17,17 +17,23 @@ struct PayTabView: View {
         .padding()
         
         VStack {
-            Text("Total")
-            TextField("Enter total", value: $payTabViewModel.totalAmount, format: .number)
-                .border(.secondary)
-                .padding()
-                .keyboardType(.decimalPad)
-            Text("Tip")
-            TextField("Enter tip", value: $payTabViewModel.tipAmount, format: .number)
-                .border(.secondary)
-                .padding()
-                .keyboardType(.decimalPad)
+            LabeledContent {
+                TextField("Enter total", value: $payTabViewModel.totalAmount, format: .number)
+                    .keyboardType(.decimalPad)
+            } label: {
+                Text("Total:")
+            }
+            .padding()
+            LabeledContent {
+                TextField("Enter tip", value: $payTabViewModel.tipAmount, format: .percent)
+                    .keyboardType(.decimalPad)
+            } label: {
+                Text("Tip:")
+            }
+            .padding()
         }
+        .padding()
+        .textFieldStyle(.roundedBorder)
         Spacer()
     }
 }
