@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  PayTab
-//
-//  Created by Christopher Bille on 1/24/24.
-//
-
 import SwiftUI
 
 struct PayTabView: View {
@@ -36,6 +29,8 @@ struct PayTabView: View {
         .textFieldStyle(.roundedBorder)
         Spacer()
     }
+    
+    
 }
 
 #Preview {
