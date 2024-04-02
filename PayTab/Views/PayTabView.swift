@@ -11,7 +11,7 @@ struct PayTabView: View {
         
         VStack {
             LabeledContent {
-                TextField("Enter total", value: $payTabViewModel.totalAmount, format: .number)
+                TextField("Enter Total", value: $payTabViewModel.totalAmount, format: .number)
                     .keyboardType(.decimalPad)
             } label: {
                 Text("Total:")
@@ -24,13 +24,31 @@ struct PayTabView: View {
                 Text("Tip:")
             }
             .padding()
+            Button("Total With Tip", systemImage: "arrow.up") {
+                payTabViewModel.totalAmountWithTip = payTabViewModel.calculateTotalwithTip()
+                payTabViewModel.renderTotalAmountWithTip = true
+            }
+            .padding()
+            if payTabViewModel.renderTotalAmountWithTip {
+                Text("\(String(format: "%.2f", payTabViewModel.totalAmountWithTip))")
+                    .padding()
+            } else {
+                Text("")
+                    .padding()
+            }
+            if payTabViewModel.renderTotalAmountWithTip {
+                Button("Clear", systemImage: "arrow.down") {
+                    payTabViewModel.totalAmount = 0.0
+                    payTabViewModel.tipAmount = 0.0
+                    payTabViewModel.totalAmountWithTip = 0
+                    payTabViewModel.renderTotalAmountWithTip = false
+                }
+            }
         }
         .padding()
         .textFieldStyle(.roundedBorder)
         Spacer()
     }
-    
-    
 }
 
 #Preview {
