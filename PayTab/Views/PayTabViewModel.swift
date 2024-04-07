@@ -8,6 +8,9 @@ class PayTabViewModel {
     var renderTotalAmountWithTip = false
     
     func calculateTotalwithTip() -> Double {
-        return totalAmount * (1 + tipAmount)
+        let roundTipAmount = round(tipAmount)
+        let tipPercentage = roundTipAmount / 100
+        print("tip percentage is \(roundTipAmount)")
+        return totalAmount * (1 + tipPercentage)
     }
 }

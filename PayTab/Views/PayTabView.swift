@@ -9,7 +9,7 @@ struct PayTabView: View {
         }
         .padding()
         
-        VStack {
+        VStack(alignment: .leading) {
             LabeledContent {
                 TextField("Enter Total", value: $payTabViewModel.totalAmount, format: .number)
                     .keyboardType(.decimalPad)
@@ -17,36 +17,36 @@ struct PayTabView: View {
                 Text("Total:")
             }
             .padding()
-            LabeledContent {
-                TextField("Enter tip", value: $payTabViewModel.tipAmount, format: .percent)
-                    .keyboardType(.decimalPad)
-            } label: {
+            HStack {
                 Text("Tip:")
+                Text("\(String(format: "%.0f", payTabViewModel.tipAmount))%")
             }
             .padding()
-            Button("Total With Tip", systemImage: "arrow.up") {
-                payTabViewModel.totalAmountWithTip = payTabViewModel.calculateTotalwithTip()
-                payTabViewModel.renderTotalAmountWithTip = true
-            }
-            .padding()
-            if payTabViewModel.renderTotalAmountWithTip {
-                Text("\(String(format: "%.2f", payTabViewModel.totalAmountWithTip))")
-                    .padding()
-            } else {
-                Text("")
-                    .padding()
-            }
-            if payTabViewModel.renderTotalAmountWithTip {
-                Button("Clear", systemImage: "arrow.down") {
-                    payTabViewModel.totalAmount = 0.0
-                    payTabViewModel.tipAmount = 0.0
-                    payTabViewModel.totalAmountWithTip = 0
-                    payTabViewModel.renderTotalAmountWithTip = false
-                }
-            }
+            Slider(value: $payTabViewModel.tipAmount, in: 0...50)
+                .padding()
+ 
         }
         .padding()
         .textFieldStyle(.roundedBorder)
+        Button("Total With Tip", systemImage: "arrow.up") {
+            payTabViewModel.totalAmountWithTip = payTabViewModel.calculateTotalwithTip()
+            payTabViewModel.renderTotalAmountWithTip = true
+        }
+        if payTabViewModel.renderTotalAmountWithTip {
+            Text("\(String(format: "%.2f", payTabViewModel.totalAmountWithTip))")
+                .padding()
+        } else {
+            Text("")
+                .padding()
+        }
+        if payTabViewModel.renderTotalAmountWithTip {
+            Button("Clear", systemImage: "clear") {
+                payTabViewModel.totalAmount = 0.0
+                payTabViewModel.tipAmount = 0.0
+                payTabViewModel.totalAmountWithTip = 0
+                payTabViewModel.renderTotalAmountWithTip = false
+            }
+        }
         Spacer()
     }
 }
