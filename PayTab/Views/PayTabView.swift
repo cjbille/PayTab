@@ -24,21 +24,28 @@ struct PayTabView: View {
             .padding()
             Slider(value: $payTabViewModel.tipAmount, in: 0...50)
                 .padding()
- 
         }
         .padding()
         .textFieldStyle(.roundedBorder)
+        
         Button("Total With Tip", systemImage: "arrow.up") {
             payTabViewModel.totalAmountWithTip = payTabViewModel.calculateTotalwithTip()
             payTabViewModel.renderTotalAmountWithTip = true
         }
+        
         if payTabViewModel.renderTotalAmountWithTip {
-            Text("\(String(format: "%.2f", payTabViewModel.totalAmountWithTip))")
-                .padding()
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Total With Tip:")
+                    Text("$\(String(format: "%.2f", payTabViewModel.totalAmountWithTip))")
+                        .padding()
+                }
+            }
         } else {
             Text("")
                 .padding()
         }
+        
         if payTabViewModel.renderTotalAmountWithTip {
             Button("Clear", systemImage: "clear") {
                 payTabViewModel.totalAmount = 0.0
