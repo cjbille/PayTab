@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PayTabView: View {
     @State private var payTabViewModel = PayTabViewModel()
+    @FocusState private var totalIsFocused: Bool
     
     var body: some View {
         HStack {
@@ -13,6 +14,7 @@ struct PayTabView: View {
             LabeledContent {
                 TextField("Enter Total", value: $payTabViewModel.totalAmount, format: .number)
                     .keyboardType(.decimalPad)
+                    .focused($totalIsFocused)
             } label: {
                 Text("Total:")
             }
@@ -28,10 +30,12 @@ struct PayTabView: View {
         .padding()
         .textFieldStyle(.roundedBorder)
         
-        Button("Total With Tip", systemImage: "arrow.up") {
+        Button("Calculate Total", systemImage: "arrow.up") {
             payTabViewModel.totalAmountWithTip = payTabViewModel.calculateTotalwithTip()
             payTabViewModel.renderTotalAmountWithTip = true
+            totalIsFocused = false
         }
+        .buttonStyle(.bordered)
         
         if payTabViewModel.renderTotalAmountWithTip {
             VStack(alignment: .leading) {
@@ -53,6 +57,7 @@ struct PayTabView: View {
                 payTabViewModel.totalAmountWithTip = 0
                 payTabViewModel.renderTotalAmountWithTip = false
             }
+            .buttonStyle(.bordered)
         }
         Spacer()
     }
