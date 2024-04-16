@@ -12,7 +12,7 @@ struct PayTabView: View {
         
         VStack(alignment: .leading) {
             LabeledContent {
-                TextField("Enter Total", value: $payTabViewModel.totalAmount, format: .number)
+                TextField("Enter Total", value: $payTabViewModel.totalAmount, format: .currency(code: "USD"))
                     .keyboardType(.decimalPad)
                     .focused($totalIsFocused)
             } label: {
@@ -24,7 +24,7 @@ struct PayTabView: View {
                 Text("\(String(format: "%.0f", payTabViewModel.tipAmount))%")
             }
             .padding()
-            Slider(value: $payTabViewModel.tipAmount, in: 0...50)
+            Slider(value: $payTabViewModel.tipAmount, in: 0...100, step: 5)
                 .padding()
         }
         .padding()
@@ -41,8 +41,13 @@ struct PayTabView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Total With Tip:")
-                    Text("$\(String(format: "%.2f", payTabViewModel.totalAmountWithTip))")
-                        .padding()
+                    if payTabViewModel.totalAmountWithTip == 0.00 {
+                        Text("$\(String(format: "%.0f", payTabViewModel.totalAmountWithTip))")
+                            .padding()
+                    } else {
+                        Text("$\(String(format: "%.2f", payTabViewModel.totalAmountWithTip))")
+                            .padding()
+                    }
                 }
             }
         } else {
