@@ -13,7 +13,7 @@ struct PayTabView: View {
             
             VStack(alignment: .leading) {
                 LabeledContent {
-                    TextField("Enter Total", value: $payTabViewModel.totalAmount, format: .currency(code: "USD"))
+                    TextField("Enter Total", value: $payTabViewModel.totalAmount, format: .number)
                         .keyboardType(.decimalPad)
                         .focused($totalIsFocused)
                         .toolbar {
@@ -70,8 +70,10 @@ struct PayTabView: View {
                     payTabViewModel.tipAmount = 0.0
                     payTabViewModel.totalAmountWithTip = 0
                     payTabViewModel.renderTotalAmountWithTip = false
+                    totalIsFocused = false
                 }
                 .buttonStyle(.bordered)
+                .foregroundStyle(.red)
             }
             Spacer()
         }
