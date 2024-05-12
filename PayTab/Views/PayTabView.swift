@@ -41,6 +41,7 @@ struct PayTabView: View {
             
             Button("Calculate Total", systemImage: "arrow.up") {
                 payTabViewModel.totalAmountWithTip = payTabViewModel.calculateTotalwithTip()
+                payTabViewModel.amountToTip = payTabViewModel.tip()
                 payTabViewModel.renderTotalAmountWithTip = true
                 totalIsFocused = false
             }
@@ -48,12 +49,25 @@ struct PayTabView: View {
             
             if payTabViewModel.renderTotalAmountWithTip {
                 VStack(alignment: .leading) {
-                    HStack {
-                        Text("Total With Tip:")
-                        if payTabViewModel.totalAmountWithTip == 0.00 {
+                    if payTabViewModel.totalAmountWithTip == 0.00 {
+                        HStack {
+                            Text("Tip Amount:")
+                            Text("$\(String(format: "%.0f", payTabViewModel.amountToTip))")
+                                .padding()
+                        }
+                        HStack {
+                            Text("Total With Tip:")
                             Text("$\(String(format: "%.0f", payTabViewModel.totalAmountWithTip))")
                                 .padding()
-                        } else {
+                        }
+                    } else {
+                        HStack {
+                            Text("Tip Amount:")
+                            Text("$\(String(format: "%.2f", payTabViewModel.amountToTip))")
+                                .padding()
+                        }
+                        HStack {
+                            Text("Total With Tip:")
                             Text("$\(String(format: "%.2f", payTabViewModel.totalAmountWithTip))")
                                 .padding()
                         }
