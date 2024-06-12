@@ -1,18 +1,30 @@
-//
-//  TotalWithTipView.swift
-//  PayTab
-//
-//  Created by Christopher Bille on 5/25/24.
-//
-
 import SwiftUI
 
 struct TotalWithTipView: View {
+    let tipFormat: String
+    let amountToTip: Double
+    let totalAmountWithTip: Double
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text("Tip Amount:")
+            Text("$\(String(format: tipFormat, amountToTip))")
+                .padding()
+        }
+        HStack {
+            Text("Total With Tip:")
+            Text("$\(String(format: tipFormat, totalAmountWithTip))")
+                .padding()
+        }
+    }
+    
+    init(_ tipFormat: String, _ amountToTip: Double, _ totalAmountWithTip: Double) {
+        self.tipFormat = tipFormat
+        self.amountToTip = amountToTip
+        self.totalAmountWithTip = totalAmountWithTip
     }
 }
 
 #Preview {
-    TotalWithTipView()
+    TotalWithTipView("0.2f", 0.0, 0.0)
 }
