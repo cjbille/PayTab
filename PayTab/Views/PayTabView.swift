@@ -46,6 +46,7 @@ struct PayTabView: View {
                 totalIsFocused = false
             }
             .buttonStyle(.bordered)
+            .foregroundColor(.blue)
             
             if payTabViewModel.renderTotalAmountWithTip {
                 VStack(alignment: .leading) {
@@ -73,6 +74,7 @@ struct PayTabView: View {
             }
             Spacer()
         }
+        .background(Gradient(colors: [.themeTop, .themeBottom]))
     }
 }
 
