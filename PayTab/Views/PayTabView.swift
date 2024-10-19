@@ -3,6 +3,7 @@ import SwiftUI
 struct PayTabView: View {
     @State private var payTabViewModel = PayTabViewModel()
     @FocusState private var totalIsFocused: Bool
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         ScrollView {
@@ -46,7 +47,7 @@ struct PayTabView: View {
                 totalIsFocused = false
             }
             .buttonStyle(.bordered)
-            .foregroundColor(.blue)
+            .foregroundColor(colorScheme == .dark ? .white : .blue)
             
             if payTabViewModel.renderTotalAmountWithTip {
                 VStack(alignment: .leading) {
